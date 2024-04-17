@@ -1,0 +1,13 @@
+{% extends 'gym/admin_dashboard.html' %}
+
+{% block content %}
+    <h2>Add New Schedule</h2>
+    <form method="post">
+        {% csrf_token %}
+        <!-- Add form fields for Schedule model -->
+        <label for="dayno">Day Number:</label>
+        <input type="text" id="dayno" name="dayno" required><br>
+        <!-- Add more fields as needed -->
+        <button type="submit">Add Schedule</button>
+    </form>
+{% endblock %}

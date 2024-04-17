@@ -1,0 +1,14 @@
+{% extends 'gym/admin_dashboard.html' %}
+
+{% block content %}
+    <h2>Schedule Detail</h2>
+    <ul>
+        <li>Day Number: {{ schedule.Dayno }}</li>
+        <li>Schedule For: {{ schedule.Schedule_for }}</li>
+        <li>Trainee Level: {{ schedule.Trainee_level }}</li>
+        <li>Process: {{ schedule.Process }}</li>
+        <li>Description: {{ schedule.Description }}</li>
+        <li>Other Notes: {{ schedule.Other_Notes }}</li>
+    </ul>
+    <a href="{% url 'schedule_list' %}">Back to Schedule List</a>
+{% endblock %}

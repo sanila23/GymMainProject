@@ -1,0 +1,14 @@
+{% extends 'gym/admin_dashboard.html' %}
+
+{% block content %}
+    <h2>Bill Detail</h2>
+    <p><strong>Due Date:</strong> {{ bill.Due_date }}</p>
+    <p><strong>Customer ID:</strong> {{ bill.Customer_id }}</p>
+    <p><strong>Mobile No:</strong> {{ bill.Mobileno }}</p>
+    <p><strong>From Date:</strong> {{ bill.From_date }}</p>
+    <p><strong>To Date:</strong> {{ bill.To_date }}</p>
+    <p><strong>Package Type:</strong> {{ bill.Package_Type }}</p>
+    <p><strong>Amount:</strong> {{ bill.Amount }}</p>
+    <p><strong>Status:</strong> {{ bill.status }}</p>
+    <!-- Add other fields as needed -->
+{% endblock %}

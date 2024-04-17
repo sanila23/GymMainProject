@@ -1,0 +1,13 @@
+{% extends 'gym/admin_dashboard.html' %}
+
+{% block content %}
+    <h2>Delete Member</h2>
+    <p>Are you sure you want to delete {{ member.Name }}?</p>
+    <form method="post">
+        {% csrf_token %}
+        <div class="button-container">
+            <button type="submit" style="background-color: #04AA6D; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px;">Confirm Delete</button>
+            <a href="{% url 'user_list' %}" style="background-color: #04AA6D; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px;">Cancel</a>
+        </div>
+    </form>
+{% endblock %}

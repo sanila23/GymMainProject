@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+    
+        .navbar {
+            background-color: skyblue; /* Change background color to sky blue */
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+    
+        .sidebar {
+            background-color: #add8e6; /* Pale blue background color */
+            color: #000; /* Change text color to black */
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            padding-top: 60px;
+        }
+    
+        .sidebar a {
+            display: block;
+            padding: 10px 20px;
+            color: #000; /* Change link text color to black */
+            text-decoration: none;
+        }
+    
+        .sidebar a:hover {
+            background-color: #555;
+        }
+    
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+    
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: relative;
+                padding-top: 15px;
+            }
+            .content {
+                margin-left: 0;
+            }
+        }
+        {% block cstyle %}
+        {% endblock %}
+    </style>
+    
+</head>
+<body>
+    <div class="navbar">
+        <h2>Admin Dashboard</h2>
+    </div>
+    <div class="sidebar">
+        <a href="{% url 'admin_dashboard' %}"><i class="fas fa-home"></i> Home</a>
+
+        <a href="/user_list"><i class="fas fa-users"></i> Members</a>
+
+        <a href="/trainer_list"><i class="fas fa-user-tie"></i> Trainers</a>
+
+        <a href="/consultant_list"><i class="fas fa-user-check"></i> Consultants</a>
+
+        <a href="/leave_request"><i class=""></i> Leave Request</a>
+
+        <a href="/add_product"><i class=""></i> Add Products</a>
+
+        <a href="/bill_list"><i class="fas fa-file-invoice-dollar"></i> Bills</a>
+    
+        <a href="/store_list"><i class="fas fa-store-alt"></i> Stores</a>
+    
+        <a href="/schedule_list"><i class="fas fa-calendar-alt"></i> Schedules</a>
+    
+        <a href="/diet_list"><i class="fas fa-utensils"></i> Diets</a>
+
+        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+
+        <a href="{% url 'index' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+
+
+    </div>
+    <div class="content">
+        <h2>Welcome to the Admin Dashboard</h2>
+        <!-- Your content goes here -->
+            {% block content %}
+            {% endblock %}
+    </div>
+</body>
+</html>

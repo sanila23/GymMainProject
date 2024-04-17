@@ -1,0 +1,11 @@
+{% extends 'gym/admin_dashboard.html' %}
+
+{% block content %}
+    <h2>Diet List</h2>
+    <ul>
+        {% for diet in diets %}
+            <li>{{ diet.Diet }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'diet_add' %}">Add New Diet</a>
+{% endblock %}

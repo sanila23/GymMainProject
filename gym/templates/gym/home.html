@@ -1,0 +1,156 @@
+{% include 'gym/header_member.html' %}
+
+
+
+<div class="scrollable-container">
+    <script type="text/javascript">
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+    </script>
+
+{% block content %}
+<style>
+    .scrollable-container {
+        max-height: 400px; /* Adjust as needed */
+        overflow-y: auto;
+        scrollbar-width: thin; /* For Firefox */
+        scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0); /* For Firefox */
+    }
+
+    .scrollable-container::-webkit-scrollbar {
+        width: 6px; /* Width of the scrollbar */
+    }
+
+    .scrollable-container::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.5); /* Color of the scrollbar thumb */
+        border-radius: 3px; /* Radius of the scrollbar thumb */
+    }
+
+    .scrollable-container::-webkit-scrollbar-track {
+        background-color: rgba(0, 0, 0, 0); /* Color of the scrollbar track */
+    }
+</style>
+
+    <ul class="listview image-listview flush transparent mt-1 mb-1">
+        <!-- Menu items -->
+        
+        <li>
+            <a href="{% url 'home' %}" class="item">
+                <div class="icon-box bg-primary">
+                    <ion-icon name="home-outline"></ion-icon>
+                </div>
+                <div class="in">
+                    Home
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'view_bill' %}" class="item">
+                <div class="icon-box bg-primary">
+                    <ion-icon name="receipt-outline"></ion-icon>
+                </div>
+                <div class="in">
+                    Bill Receipts
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'view_store' %}" class="item">
+                <div class="icon-box bg-primary">
+                    <ion-icon name="storefront-outline"></ion-icon>
+                </div>
+                <div class="in">
+                    Supplement Store
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'view_diet' %}" class="item">
+                <div class="icon-box bg-primary">
+                    <ion-icon name="list-outline"></ion-icon>
+                </div>
+                <div class="in">
+                    Diet
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'view_schedule' %}" class="item">
+                <div class="icon-box bg-primary">
+                    <ion-icon name="list-circle-outline"></ion-icon>
+                </div>
+                <div class="in">
+                    Schedule
+                </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'request_leave' %}" class="item">
+                <div class="icon-box bg-primary">
+                    <ion-icon name="calendar-outline"></ion-icon>
+                </div>
+                <div class="in">Request Leave</div>
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'booking' %}" class="item">
+                <div class="icon-box bg-primary">
+                    <ion-icon name="calendar-outline"></ion-icon>
+                </div>
+                <div class="in">
+                    Booking Gym Class
+                </div>
+            </a>
+        </li>
+        
+
+        <!-- Booking and Appointment links -->
+        <li>
+            <a href="{% url 'booking' %}" class="item">
+                <div class="icon-box bg-primary">
+                    <ion-icon name="calendar-outline"></ion-icon>
+                </div>
+                <div class="in">
+                    Booking Consultant
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'appointment' %}" class="item">
+                <div class="icon-box bg-primary">
+                    <ion-icon name="time-outline"></ion-icon>
+                </div>
+                <div class="in">
+                    Appointments
+                </div>
+            </a>
+        </li>
+    </ul>
+
+    {% if error %}
+        {{ error }}
+    {% endif %}
+    <div class="edit-profile-button">
+        <a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+    </div>
+{% endblock %} 

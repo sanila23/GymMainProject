@@ -1,0 +1,130 @@
+{% load static %}
+{% include 'includes/productheader.html' %}
+{% block content %}
+    <div class="sidebar">
+        <!-- Add your filter options and content for the sidebar here -->
+        <h3>Ornaments</h3>
+        <ul>
+            <li><a href="{% url 'products_by_subcategory' 'LegExtension' %}">Leg Extension</a></li>
+            <li><a href="{% url 'products_by_subcategory' 'Biceps/Triceps Extension' %}">Biceps/Triceps Extension</a></li>
+            <li><a href="{% url 'products_by_subcategory' 'Pack Fly' %}">Pack Fly</a></li>
+            <li><a href="{% url 'products_by_subcategory' 'WeightLift' %}">WeightLift</a></li>
+            <li><a hreff="{% url 'products_by_subcategory' 'Leg Piece' %}">Leg Piece</a></li>
+            <li><a href="{% url 'products_by_subcategory' 'Hack Squat Leg Press' %}">Hack Squat Leg Press</a></li>
+            <li><a href="{% url 'products_by_subcategory' 'T-Bar' %}">T-Bar</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <div class="product-container">
+            {% for product in products %}
+                <div class="product-card">
+                    <a href="{% url 'product_details' product.id %}">
+                        {% if product.product_image %}
+                            <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}">
+                        {% endif %}
+                    </a>
+                    <div class="product-details">
+                        <h4>{{ product.product_name }}</h4> 
+                        <p>Rs.{{ product.sale_price }}</p>
+                        <p>{{ product.discount }}%</p>
+                        <p class="strikethrough">Rs.{{ product.price }}
+                        <form method="post" action="{% url 'add_to_wishlist' product.id %}">
+                            {% csrf_token %}
+                            <button class="wishlist-button" type="submit">Add to Wishlist</button>
+                        </form>
+                        
+                            <form method="post" action="{% url 'add_to_cart' product.id %}">
+                                {% csrf_token %}
+                                <button class="cart-button" type="submit">Add to Cart</button>
+                            </form>
+                        
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+    
+    <!-- Your HTML content for product listings above -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
+    <script>
+        // JavaScript code for dynamic product loading
+        $(document).ready(function () {
+            // Make an initial request to load products with the "neckpieces" subcategory
+            loadProductsBySubcategory('Neckpieces');
+
+            $('.dropdown-item').on('click', function (e) {
+                e.preventDefault();
+                var subcategory = $(this).attr('data-subcategory');
+                loadProductsBySubcategory(subcategory);
+            });
+        });
+
+        function loadProductsBySubcategory(subcategory) {
+            $.ajax({
+                url: '{% url "products_by_subcategory" "placeholder" %}'.replace('placeholder', subcategory),
+                type: 'GET',
+                success: function (data) {
+                    $('#product-container').html(data);
+                },
+                error: function () {
+                    console.log('Error loading products.');
+                }
+            });
+        }
+    </script>
+    <script>
+        // JavaScript code to handle adding to the wishlist
+        const wishlistForm = document.getElementById('wishlist-form');
+        const wishlistLink = document.getElementById('wishlist-link');
+        let isAddedToWishlist = false;
+
+        wishlistLink.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            // Make an AJAX request to add the product to the wishlist
+            fetch(wishlistForm.action, {
+                method: 'POST',
+                body: new FormData(wishlistForm),
+            })
+                .then(response => {
+                    if (response.status === 200) {
+                        // Product added to the wishlist successfully
+                        isAddedToWishlist = true;
+                        wishlistLink.querySelector('i').classList.add('added-to-wishlist');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+    <script>
+        function searchProducts() {
+            // Get the search term from the input field
+            var searchTerm = document.getElementById("searchInput").value.toLowerCase();
+
+            // Get all product cards in the container
+            var productCards = document.querySelectorAll(".product-card");
+
+            // Loop through each product card and hide/show based on the search term
+            productCards.forEach(function (card) {
+                var productName = card.querySelector(".product-details h4").textContent.toLowerCase();
+
+                // If the product name contains the search term, show the card; otherwise, hide it
+                if (productName.includes(searchTerm)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+    </script>
+
+</body>
+
+<!-- Rest of your website content goes here -->
+
+</html>
+{% endblock %}

@@ -1,0 +1,272 @@
+  {% load static %}
+<div id="loader">
+        <div class="spinner-border text-primary" role="status"></div>
+    </div>
+    <!-- * loader -->
+
+    <!-- App Header -->
+    <div class="appHeader bg-primary scrolled">
+        <div class="left">
+            <a href="#" class="headerButton" data-bs-toggle="modal" data-bs-target="#sidebarPanel">
+                <ion-icon name="menu-outline"></ion-icon>
+            </a>
+        </div>
+        <div class="pageTitle">
+        Gym Management App        
+        </div>
+    </div>
+    <!-- * App Header -->
+
+    <!-- Search Component -->
+    <div id="search" class="appHeader">
+        <form class="search-form">
+            <div class="form-group searchbox">
+                <input type="text" class="form-control" placeholder="Search...">
+                <i class="input-icon">
+                    <ion-icon name="search-outline"></ion-icon>
+                </i>
+                <a href="#" class="ms-1 close toggle-searchbox">
+                    <ion-icon name="close-circle"></ion-icon>
+                </a>
+            </div>
+        </form>
+    </div>
+    <!-- * Search Component -->
+
+    <!-- App Capsule -->
+    <div id="appCapsule">
+
+         <div class="header-large-title">
+            <h1 class="title">Gym Management App </h1>
+        </div>
+ <div class="listview-title mt-2"></div>
+        
+         <div class="section mt-2">
+        
+            <div class="row">
+             {% block content %}
+            
+            </div>
+           
+
+        </div>
+        <script>
+            function logoutAndRedirect() {
+                // Perform logout actions here if needed
+        
+                // Redirect to the index page of the project
+                window.location.href = "{% url 'index' %}";
+            }
+        </script>
+        
+
+  <!-- App Bottom Menu -->
+    <div class="appBottomMenu">
+        <a href="{% url 'home' %}" class="item">
+            <div class="col">
+                <ion-icon name="home-outline"></ion-icon>
+                  <span class="badge badge-danger">home</span>
+              
+            </div>
+        </a>
+		
+      <a  href="{% url 'view_store' %}"  class="item active">
+            <div class="col">
+        <ion-icon name="storefront-outline"></ion-icon>   <span class="badge badge-danger">supplement store</span>
+            </div>
+        </a>
+   
+        <a href="#" class="item" onclick="logoutAndRedirect()">
+            <div class="col">
+                <ion-icon name="exit-outline"></ion-icon>
+                <span class="badge badge-danger">logout</span>
+            </div>
+        </a>
+        
+        <a href="#" class="item" data-bs-toggle="modal" data-bs-target="#sidebarPanel">
+            <div class="col">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
+        </a>
+    </div>
+    <!-- * App Bottom Menu -->
+
+    <!-- App Sidebar -->
+<div class="modal fade panelbox panelbox-left" id="sidebarPanel" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body p-0">
+
+                <!-- profile box -->
+                <div class="profileBox">
+                    <div class="image-wrapper">
+                        <img src="{% static 'img/logo.png' %}" alt="image" class="imaged rounded">
+                    </div>
+                    <div class="in">
+                        <strong>Gym Management App</strong>
+                    </div>
+                    <a href="#" class="close-sidebar-button" data-bs-dismiss="modal">
+                        <ion-icon name="close"></ion-icon>
+                    </a>
+                </div>
+                <!-- * profile box -->
+
+                <ul class="listview flush transparent no-line image-listview mt-2">
+                    <li>
+                        <a href="{% url 'home' %}" class="item">
+                            <div class="icon-box bg-primary">
+                                <ion-icon name="home-outline"></ion-icon>
+                            </div>
+                            <div class="in">Home</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'view_bill' %}" class="item">
+                            <div class="icon-box bg-primary">
+                                <ion-icon name="receipt-outline"></ion-icon>
+                            </div>
+                            <div class="in">Bill Receipts</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'view_store' %}" class="item">
+                            <div class="icon-box bg-primary">
+                                <ion-icon name="storefront-outline"></ion-icon>
+                            </div>
+                            <div class="in">Supplement Store</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'view_diet' %}" class="item">
+                            <div class="icon-box bg-primary">
+                                <ion-icon name="list-outline"></ion-icon>
+                            </div>
+                            <div class="in">Diet</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'view_schedule' %}" class="item">
+                            <div class="icon-box bg-primary">
+                                <ion-icon name="list-circle-outline"></ion-icon>
+                            </div>
+                            <div class="in">Schedule</div>
+                        </a>
+                    </li>
+                    <!-- Add Appointment link -->
+
+                    <li>
+                        <a href="{% url 'request_leave' %}" class="item">
+                            <div class="icon-box bg-primary">
+                                <ion-icon name="calendar-outline"></ion-icon>
+                            </div>
+                            <div class="in">Request Leave</div>
+                        </a>
+                    </li>
+                    
+
+                    
+                    <li>
+                        <a href="{% url 'appointment' %}" class="item">
+                            <div class="icon-box bg-primary">
+                                <ion-icon name="time-outline"></ion-icon>
+                            </div>
+                            <div class="in">Appointment</div>
+                        </a>
+                    </li>
+                    <!-- Add Booking link -->
+                    <li>
+                        <a href="{% url 'booking' %}" class="item">
+                            <div class="icon-box bg-primary">
+                                <ion-icon name="calendar-outline"></ion-icon>
+                            </div>
+                            <div class="in">Booking</div>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'shop' %}" class="item">
+                            <div class="icon-box bg-primary">
+                                <ion-icon name="basket-outline"></ion-icon>
+                            </div>
+                            <div class="in">Shop</div>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <div class="item">
+                            <div class="icon-box bg-primary">
+                                <ion-icon name="moon-outline"></ion-icon>
+                            </div>
+                            <div class="in">
+                                <div>Dark Mode</div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input dark-mode-switch" type="checkbox" id="darkmodesidebar">
+                                    <label class="form-check-label" for="darkmodesidebar"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li>
+                        <a href="#" class="item">
+                            <div class="icon-box bg-primary">
+                                <ion-icon name="log-out-outline"></ion-icon>
+                            </div>
+                            <div class="in">Logout</div>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <!-- sidebar buttons -->
+            <div class="sidebar-buttons">
+                <a href="{% url 'home' %}" class="button">
+                    <ion-icon name="home-outline"></ion-icon>
+                </a>
+                <a href="{% url 'view_bill' %}" class="button">
+                    <ion-icon name="receipt-outline"></ion-icon>
+                </a>
+                <a href="{% url 'logout' %}" class="button">
+                    <ion-icon name="log-out-outline"></ion-icon>
+                </a>
+            </div>
+            <!-- * sidebar buttons -->
+        </div>
+    </div>
+</div>
+<!-- * App Sidebar -->
+
+                <div class="sidebar-buttons">
+                 <a href="{% url 'home' %}" class="button">
+                        <ion-icon name="home-outline"></ion-icon>
+                    </a>
+                    <a href="{% url 'view_bill' %}" class="button">
+                 <ion-icon name="receipt-outline"></ion-icon>
+
+                      
+                    </a>
+                   
+                    <a href="{% url 'logout' %}" class="button">
+                        <ion-icon name="log-out-outline"></ion-icon>
+                    </a>
+                </div>
+                <!-- * sidebar buttons -->
+            </div>
+        </div>
+    </div>
+    <!-- * App Sidebar -->
+   
+{% endblock %}
+
+    <!-- iOS Add to Home Action Sheet -->
+   
+    <!-- * iOS Add to Home Action Sheet -->
+    <!-- Android Add to Home Action Sheet -->
+   
+    <!-- * Android Add to Home Action Sheet -->
+
+
+    <!-- ============== Js Files ==============  -->
+    <!-- Bootstrap -->
+  

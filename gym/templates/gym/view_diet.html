@@ -1,0 +1,64 @@
+<html lang="en">
+ 
+ {% include 'gym/header_member.html' %}
+	
+{% block content %}
+<head>
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+   
+	<script>
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    $("#profileModal").modal({show: true});
+  });
+
+</script>
+
+         <div class="listview-title mt-2">Diet Details</div>
+        
+
+         <div class="section mt-2">
+        
+             <div class="row">
+             	{% for x in getdata %}
+              <div class="col-6"> 
+			        <div class="card product-card" >
+                        <div class="card-body" style="line-height: auto;">
+						
+                             <b> <p class="text" style="font-size: 16px;">Diet:&nbsp;&nbsp; &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;  &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; {{x.Diet}}</p></b>
+                          
+							   <b> <p class="text" style="font-size: 16px;">Solution1:&nbsp;&nbsp; &nbsp;  &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; {{x.Solution1}}</p></b>
+             
+   <b> <p class="text" style="font-size: 16px;">Solution2:&nbsp;&nbsp; &nbsp;  &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; {{x.Solution2}}</p></b>
+             
+						<b>  <p class="text" style="font-size: 16px;">Process : <br> &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; {{x.Process}}</p></b>
+                     
+                          <b>  <p class="text" style="font-size: 16px;">Description: <br>  &nbsp;  &nbsp; &nbsp;    &nbsp;   &nbsp; &nbsp;   &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; {{x.Description}}</p></b>
+                            <b>  <p class="text" style="font-size: 16px;">Other_Notes:   &nbsp;  &nbsp; &nbsp;    &nbsp;   &nbsp; &nbsp;   &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; {{x.Other_Notes}}</p></b>
+                        
+                        </div>
+                    
+                    </div>
+                    
+                </div>
+             {% endfor %}
+            </div>
+        
+    	</div>
+	  	
+    <!-- * App Sidebar -->
+     {% if error %}
+{{ error }}
+
+{% endif %}
+
+{% endblock %}
+
+    <!-- iOS Add to Home Action Sheet -->
+   
+    <!-- * iOS Add to Home Action Sheet -->
+    <!-- Android Add to Home Action Sheet -->
+   
+    <!-- * Android Add to Home Action Sheet -->

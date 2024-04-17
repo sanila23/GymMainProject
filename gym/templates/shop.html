@@ -1,0 +1,212 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+   <head>
+      <!-- Basic -->
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <!-- Mobile Metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <!-- Site Metas -->
+      <meta name="keywords" content="" />
+      <meta name="description" content="" />
+      <meta name="author" content="" />
+      <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="">
+      <title>SmartGym Fashion</title>
+      <!-- bootstrap core css -->
+      <link rel="stylesheet" type="text/css" href="{% static  'css/bootstrap.css' %}" />
+      <!-- font awesome style -->
+      <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" />
+      <!-- Custom styles for this template -->
+      <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+      <!-- responsive style -->
+      <link href="{%  static 'css/responsive.css' %}" rel="stylesheet" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/js/bootstrap.min.js"></script>
+    <style>
+      /* Hide dropdown menus by default */
+.nav-item .dropdown-menu {
+    display: none;
+}
+
+/* Display the dropdown menu when the parent item is hovered */
+.nav-item:hover .dropdown-menu {
+    display: block;
+}
+/* Styling for the shopping cart icon */
+a[href*="view_cart"] i.fa-shopping-cart {
+    color: black; /* Red color for the shopping cart icon */
+    font-size: 22px; /* Adjust the font size as needed */
+    margin-right: 10px;
+    margin-top:5px; /* Adjust the right margin as needed */
+    
+}
+
+/* Styling for the heart icon */
+a[href*="wishlist"] i.fa-heart {
+    color: black; /* Red color for the heart icon */
+    font-size: 22px; /* Adjust the font size as needed */
+    margin-right: 10px; /* Adjust the right margin as needed */
+    margin-top:5px;
+    margin-left:10px;
+}
+</style>
+   </head>
+   <body>
+      <div class="hero_area">
+         <!-- header section strats -->
+         <header class="{% static 'header_section' %}">
+            <div class="container">
+               
+               <nav class="navbar navbar-expand-lg custom_nav-container ">
+                  <!--<a class="navbar-brand" href="index.html"><img width="250" src="images/logo.png" alt="#" /></a>-->
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class=""> </span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                     <ul class="navbar-nav ml-auto">
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                          <strong> Welcome, {{ user.fullName }}!</strong>
+                        </li>
+                        {% endif %}
+                     </ul>
+                     <ul class="navbar-nav">
+                        <li class="nav-item active">
+                         
+                              
+                           <a class=" nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                       
+                        
+                       
+                       <!-- Your HTML code for the navigation menu -->
+                       <li class="nav-item dropdown">
+                       <a class="nav-link dropdown-toggle" href="#" id="equipmentsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           Equipments
+                       </a>
+                       <div class="dropdown-menu" aria-labelledby="equipmentsDropdown">
+                        <a class="dropdown-item" href="{% url 'products_by_subcategory' 'LegExtension' %}">Leg Extension</a>
+                         {% comment %} <a class="dropdown-item" href="{% url 'products_by_subcategory' 'Biceps/Triceps Extension' %}">Biceps/Triceps Extension</a>
+                           <a class="dropdown-item" href="{% url 'products_by_subcategory' 'Pack Fly' %}">Pack Fly</a> {% endcomment %}
+                            <a class="dropdown-item" href="{% url 'products_by_subcategory' 'WeightLift' %}">WeightLift</a>
+                             <a class="dropdown-item" href="{% url 'products_by_subcategory' 'Leg Piece' %}">Leg Piece</a>
+                              <a class="dropdown-item" href="{% url 'products_by_subcategory' 'Hack Squat Leg Press' %}">Hack Squat Leg Press</a>
+                               <a class="dropdown-item" href="{% url 'products_by_subcategory' 'T-Bar' %}">T-Bar</a>
+                           
+       <!-- Add other dropdown items here -->
+
+                          
+                       </div>
+                    </li>
+ <li class="nav-item dropdown">
+   <a class="nav-link dropdown-toggle" href="#" id="dressDropdown" role- button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       GymDress
+   </a>
+   <div class="dropdown-menu" aria-labelledby="dressDropdown">
+       <a class="dropdown-item" href="{% url 'products_by_subcategory' 'T-shirt' %}" id="t-shirt-link">T-shirt</a>
+       <a class="dropdown-item" href="{% url 'products_by_subcategory' 'Shots' %}" id="shots-link">Shots</a>
+       <a class="dropdown-item" href="{% url 'products_by_subcategory' 'Pants' %}" id="pants-link">Pants</a>
+       <a class="dropdown-item" href="{% url 'products_by_subcategory' 'Shoes' %}" id="shoes-link">Shoes</a>
+   </div>
+</li> 
+<li class="nav-item">
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dressDropdown" role- button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Nutrients/Protein Powders
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dressDropdown">
+            <a class="dropdown-item" href="{% url 'products_by_subcategory' 'Whey Protein' %}" id="whey-protein-link">Whey Protein</a>
+            <a class="dropdown-item" href="{% url 'products_by_subcategory' 'Optimum Nutrition' %}" id="optimum-nutrition-link">Optimum Nutrition</a>
+            <a class="dropdown-item" href="{% url 'products_by_subcategory' 'Athletic Greens' %}" id="athletic-greens-link">Athletic Greens</a>
+            <a class="dropdown-item" href="{% url 'products_by_subcategory' 'Madmonq Champion-Vitamin' %}" id="madmonq-champion-vitamin-link">Madmonq Champion-Vitamin</a>
+        </div>
+     </li> 
+     <li class="nav-item">
+   <a class="nav-link" href="">rental</a>
+</li>
+<li class="nav-item">
+   <a class="nav-link" href="">Connect us</a>
+</li>
+<li class="nav-item">
+   <a class="nav-link" href="">My orders</a>
+</li>
+<li class="nav-item">
+   <a class="nav-link" href="">Logout</a>
+</li>
+{% comment %} <li class="nav-item">
+   <a href="{% url 'view_cart'  %}"><i class="fa fa-shopping-cart"></i></a>
+</li> {% endcomment %}
+{% comment %} <li class="nav-item">
+<a href="{% url 'wishlist'  %}"><i class="fa fa-heart"></i></a>
+</li> {% endcomment %}
+<!-- Container for displaying products -->
+<div id="product-container">
+   <!-- Products will be displayed here -->
+</div>
+
+<!-- JavaScript code for dynamic product loading -->
+<script>
+   
+</script>
+
+                        <li class="nav-item">
+                           <a class="nav-link" href="#">
+                           </a>
+                        </li>
+                        {% comment %} <form class="form-inline">
+                           <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                           <i class="fa fa-search" aria-hidden="true"></i>
+                           </button>
+                        </form> {% endcomment %}
+                     </ul>
+                  </div>
+               </nav>
+            </div>
+         </header>
+         <!-- end header section -->
+         <!-- slider section -->
+         <style>
+            .slider_section {
+                background-image: url("{% static 'img/images1.jpg' %}");
+                background-size: cover; /* Cover the entire viewport */
+                background-position: center;
+                padding: 500px 0; /* Add padding to the top and bottom */
+                /* Add any additional styling here */
+            }
+        
+            .slider_section .detail-box h1 span,
+            .slider_section .detail-box p {
+                color: white; /* Set the color of the text to white */
+            }
+        </style>
+        
+        <section class="slider_section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7 col-lg-6">
+                        <div class="detail-box">
+                            <h1>
+                                <span>SmartGym Fashion</span>
+                                <br>
+                            </h1>
+                            <p>Online Gym Products Store</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>  
+      
+      <div class="cpy_">
+         
+      </div>
+      <!-- jQery -->
+      <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+      <!-- popper js -->
+      <script src="{% static 'js/popper.min.js' %}"></script>
+      <!-- bootstrap js -->
+      <script src="{% static 'js/bootstrap.js' %}"></script>
+      <!-- custom js -->
+      <script src="{% static 'js/custom.js' %}"></script>
+   </body>
+</html>

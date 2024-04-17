@@ -1,0 +1,62 @@
+{% extends 'gym/admin_dashboard.html' %}
+
+{% block content %}
+<style>
+    /* CSS for table styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    th, td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        text-align: left;
+    }
+    th {
+        background-color: white;
+        color: black;
+    }
+    /* Center the back button */
+    .button-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .button-container a {
+        background-color: #FF6347;
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin-left: 10px;
+    }
+</style>
+
+    <h2>Consultant Details</h2>
+    <table>
+        <tr>
+            <th>Attribute</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td><strong>Name</strong></td>
+            <td>{{ consultant.Name }}</td>
+        </tr>
+        <tr>
+            <td><strong>Email</strong></td>
+            <td>{{ consultant.Email }}</td>
+        </tr>
+        <tr>
+            <td><strong>Mobile</strong></td>
+            <td>{{ consultant.Mobile }}</td>
+        </tr>
+        <tr>
+            <td><strong>Address</strong></td>
+            <td>{{ consultant.Address }}</td>
+        </tr>
+    </table>
+
+    <div class="back-button-container">
+        <a href="{% url 'consultant_list' %}" style="background-color: #04AA6D; color: white; text-decoration: none; padding: 5px 10px; border-radius: 5px;">Back</a>
+    </div>
+{% endblock %}

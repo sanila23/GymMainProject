@@ -1,0 +1,10 @@
+{% extends 'gym/admin_dashboard.html' %}
+
+{% block content %}
+    <h2>Add New Diet</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Renders all form fields as paragraphs -->
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}

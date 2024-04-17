@@ -1,0 +1,14 @@
+{% extends 'gym/admin_dashboard.html' %}
+
+{% block content %}
+    <h2>Diet Detail</h2>
+    <ul>
+        <li>Diet: {{ diet.Diet }}</li>
+        <li>Solution 1: {{ diet.Solution1 }}</li>
+        <li>Solution 2: {{ diet.Solution2 }}</li>
+        <li>Process: {{ diet.Process }}</li>
+        <li>Description: {{ diet.Description }}</li>
+        <li>Other Notes: {{ diet.Other_Notes }}</li>
+    </ul>
+    <a href="{% url 'diet_list' %}">Back to Diet List</a>
+{% endblock %}

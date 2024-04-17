@@ -1,0 +1,29 @@
+<!-- consultant_dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultant Dashboard</title>
+    <!-- Include your CSS files here -->
+</head>
+<body>
+    <h1>Welcome, {{ consultant_name }}</h1>
+    
+    <h2>Bookings</h2>
+    <ul>
+        {% for booking in bookings %}
+            <li>{{ booking.member_name }} - {{ booking.date }}</li>
+        {% endfor %}
+    </ul>
+    
+    <h2>Send Notification</h2>
+    <form method="post" action="{% url 'send_notification' %}">
+        {% csrf_token %}
+        <textarea name="message" rows="4" cols="50" placeholder="Enter your notification message"></textarea><br>
+        <input type="submit" value="Send Notification">
+    </form>
+
+    <!-- Include your JavaScript files here -->
+</body>
+</html>

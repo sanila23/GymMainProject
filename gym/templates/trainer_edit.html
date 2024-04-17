@@ -1,0 +1,58 @@
+{% extends 'gym/admin_dashboard.html' %}
+
+{% block content %}
+  <style>
+    /* CSS for table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th,
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background-color: white;
+      color: black;
+    }
+    /* Center the buttons */
+    .button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .button-container button {
+      background-color: #98fb98;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin-left: 10px;
+    }
+    .button-container button:last-child {
+      background-color: #ff6347;
+    }
+  </style>
+
+  <h2>Edit Trainer</h2>
+  <form method="post">
+    {% csrf_token %}
+    <table>
+      {% for field in form %}
+        <tr>
+          <th>{{ field.label_tag }}</th>
+          <td>{{ field }}</td>
+        </tr>
+      {% endfor %}
+      <tr>
+        <td colspan="2" class="button-container">
+          <div class="button-container">
+            <button type="submit" style="background-color: #04AA6D; color: white; text-decoration: none; padding: 12px 20px; border-radius: 5px;">Save</button>
+            <a href="{% url 'trainer_list' %}"style="background-color: orangered; color: white; text-decoration: none; padding: 11px 19px; border-radius: 5px;">Back</a>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </form>
+{% endblock %}

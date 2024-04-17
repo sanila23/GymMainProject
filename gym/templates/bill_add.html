@@ -1,0 +1,52 @@
+{% extends 'gym/admin_dashboard.html' %}
+
+{% block content %}
+    <style>
+        /* CSS for table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: white;
+            color: black;
+        }
+        /* Center the button */
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .button-container button {
+            background-color: #04AA6D;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+    </style>
+
+    <h2>Add New Bill</h2>
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            {% for field in form %}
+            <tr>
+                <th>{{ field.label_tag }}</th>
+                <td>{{ field }}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="2" class="button-container">
+                    <button type="submit" style="background-color: #04AA6D;">Save</button>
+                    <a href="{% url 'bill_list' %}" style="background-color: #FF6347; color: white; text-decoration: none; padding: 9px 12px; border-radius: 5px;">Cancel</a>
+                </td>
+            </tr>
+            
+        </table>
+    </form>
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends 'gym/admin_dashboard.html' %}
+
+{% block content %}
+    <style>
+        /* CSS for table styling */
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        .detail-link {
+            color: skyblue; /* Set the color for member_detail */
+        }
+        
+        .edit-link {
+            color: yellow; /* Set the color for edit_member */
+        }
+        
+        .delete-link {
+            color: red; /* Set the color for delete_member */
+        }
+
+        /* Style for the Add Bill button */
+        .add-bill-button {
+            background-color: #04AA6D;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin-bottom: 10px; /* Add margin below the button */
+        }
+
+        /* Style for the container of the Bill List and Add Bill button */
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+
+    <div class="button-container">
+        <h2>Bill List</h2>
+        <a href="{% url 'bill_add' %}" class="add-bill-button"><i class="fas fa-file-invoice-dollar"></i> Add Bill</a>
+    </div>
+    <table id="customers">
+        <thead>
+            <tr>
+                <th>Due Date</th>
+                <th>Customer ID</th>
+                <th>Mobile No</th>
+                <th>From Date</th>
+                <th>To Date</th>
+                <th>Package Type</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bill in bills %}
+                <tr>
+                    <td>{{ bill.Due_date }}</td>
+                    <td>{{ bill.Customer_id }}</td>
+                    <td>{{ bill.Mobileno }}</td>
+                    <td>{{ bill.From_date }}</td>
+                    <td>{{ bill.To_date }}</td>
+                    <td>{{ bill.Package_Type }}</td>
+                    <td>{{ bill.Amount }}</td>
+                    <td>{{ bill.status }}</td>
+                    <td>
+                        <a href="{% url 'bill_detail' user.pk %}" class="detail-link"><i class="fas fa-eye"></i></a>
+                        <a href="{% url 'bill_edit' user.pk %}" class="edit-link" style="margin-left: 10px;"><i class="fas fa-edit"></i></a>
+                        <a href="{% url 'bill_delete' user.pk %}" class="delete-link" style="margin-left: 10px;"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% block content %}
+    <h2>Manage Leave Requests</h2>
+    <form method="post">
+        {% csrf_token %}
+        <ul>
+            {% for leave_request in leave_requests %}
+                <li>
+                    {{ leave_request.start_date }} to {{ leave_request.end_date }}
+                    <input type="hidden" name="leave_request_id" value="{{ leave_request.id }}">
+                    <select name="status">
+                        <option value="Accepted">Accept</option>
+                        <option value="Rejected">Reject</option>
+                    </select>
+                </li>
+            {% endfor %}
+        </ul>
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}

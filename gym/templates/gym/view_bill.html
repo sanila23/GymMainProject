@@ -1,0 +1,69 @@
+<html lang="en">
+ 
+ {% include 'gym/header_member.html' %}
+	
+{% block content %}
+<head>
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+   
+	<script>
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    $("#profileModal").modal({show: true});
+  });
+
+</script>
+
+         <div class="listview-title mt-2">Bill Receipt Details</div>
+        
+
+         <div class="section mt-2">
+        
+             <div class="row">
+             	{% for x in getdata %}
+              <div class="col-6"> 
+			        <div class="card product-card" >
+                        <div class="card-body" style="line-height: auto;">
+                             <b> <p class="text" style="font-size: 16px;">Due Date:&nbsp;&nbsp; &nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;  &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; {{x.Due_date}}</p></b>
+                          
+							   <b> <p class="text" style="font-size: 16px;">From:&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; {{x.From_date}}</p></b>
+             
+   <b> <p class="text" style="font-size: 16px;">To:&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; {{x.To_date}}</p></b>
+             
+						<b>  <p class="text" style="font-size: 16px;">Package :  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; {{x.Package_Type}}</p></b>
+                     
+                          <b>  <p class="text" style="font-size: 16px;">Amount:   &nbsp;  &nbsp; &nbsp;    &nbsp;   &nbsp; &nbsp;   &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; {{x.Amount}}</p></b>
+                            <b>  <p class="text" style="font-size: 16px;">Payed: &nbsp;  &nbsp;  &nbsp; &nbsp;    &nbsp;   &nbsp; &nbsp;   &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; {{x.Payed}}</p></b>
+                         <b>  <p class="text" style="font-size: 16px;">Balance:   &nbsp;  &nbsp; &nbsp;    &nbsp;   &nbsp; &nbsp;   &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; {{Balance}}</p></b>
+                           <b>  <p class="text" style="font-size: 16px;">Mobileno:   &nbsp;   &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; {{x.Mobileno}}</p></b>
+                        <b>  <p class="text" style="font-size: 16px;">Batch:   &nbsp;  &nbsp; &nbsp;    &nbsp;   &nbsp; &nbsp;   &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; {{x.Batch}}</p></b>
+                       	 <center>
+							<button onclick="window.print()">Print</button>
+		
+	</center>
+                        </div>
+                    
+                    </div>
+                    
+                </div>
+             {% endfor %}
+            </div>
+        
+    	</div>
+	  	
+    <!-- * App Sidebar -->
+     {% if error %}
+{{ error }}
+
+{% endif %}
+
+{% endblock %}
+
+    <!-- iOS Add to Home Action Sheet -->
+   
+    <!-- * iOS Add to Home Action Sheet -->
+    <!-- Android Add to Home Action Sheet -->
+   
+    <!-- * Android Add to Home Action Sheet -->

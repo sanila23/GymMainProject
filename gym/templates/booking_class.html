@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Class Booking Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        /* Add your CSS styles here */
+        body {
+            margin: 0; /* Reset default body margin */
+            padding: 0; /* Reset default body padding */
+            font-family: Arial, sans-serif; /* Change font if needed */
+            background-color: #f0f0f0; /* Set background color */
+        }
+
+        .g8-section {
+            width: 100%;
+            height: 800px; /* Adjust the height as needed */
+            background-image: url("{% static 'img/elements/gym.jpg' %}");
+            background-size: cover; /* Scale the background image to cover the entire section */
+            background-position: center; /* Center the background image */
+            position: relative;
+            margin-bottom: 10px; /* Add margin to separate form */
+        }
+
+        form {
+            margin: 0 auto; /* Center the form horizontally */
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            width: 300px;
+            position: relative;
+            top: 50%; /* Move the form down by 50% of its own height */
+            transform: translateY(-50%); /* Adjust vertical alignment */
+        }
+
+        .form-field {
+            margin-bottom: 10px;
+        }
+        
+        .form-field label {
+            display: block;
+        }
+        
+        .form-field select {
+            width: 300px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="text"],
+        input[type="date"] {
+            width: calc(100% - 22px); /* Adjust width to account for padding and border */
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Your body content here -->
+    <section class="g8-section">
+        <!-- Image will be set as background through CSS -->
+    
+
+        <form method="POST" action="{% url 'book_class' %}">
+            {% csrf_token %}
+            <!-- Add fields for class booking form -->
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" placeholder="Date">
+            
+            <label for="time">Time:</label>
+            <input type="text" id="time" name="time" placeholder="Time">
+            
+            <div class="form-field">
+                <label for="class">Class:</label>
+                <select id="class" name="class">
+                    {% for gym_class in gym_classes %}
+                        <option value="{{ gym_class.id }}">{{ gym_class.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <button type="submit">Book Now</button>
+        </form>
+        
+</section>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        flatpickr('#time', {
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: "h:i K", // Format hours, minutes, and AM/PM
+        });
+    </script>
+</body>
+</html>
