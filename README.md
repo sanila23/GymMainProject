@@ -1,4 +1,5 @@
 Gym Management System - Final Semester Main Project
+
 Welcome to the Gym Management System project repository! This project aims to streamline and enhance the operations of fitness centers or gyms through the development of a comprehensive software application.
 
 About
@@ -11,6 +12,7 @@ Attendance Tracking: Keep track of member attendance for classes and sessions.
 Billing: Generate digital payment receipts and manage billing efficiently.
 Inventory Management: Monitor and manage gym equipment and supplies.
 Reporting: Gain insights through comprehensive reporting and analytics.
+
 Deployment
 The project is currently deployed at (http://13.233.106.66:8000/). You can access the application to explore its functionalities.
 
