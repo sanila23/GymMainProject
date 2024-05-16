@@ -12,7 +12,7 @@ Billing: Generate digital payment receipts and manage billing efficiently.
 Inventory Management: Monitor and manage gym equipment and supplies.
 Reporting: Gain insights through comprehensive reporting and analytics.
 Deployment
-The project is currently deployed at gym-main-project-1.vercel.app. You can access the application to explore its functionalities.
+The project is currently deployed at (http://13.233.106.66:8000/). You can access the application to explore its functionalities.
 
 Technologies Used
 Python: Backend development
